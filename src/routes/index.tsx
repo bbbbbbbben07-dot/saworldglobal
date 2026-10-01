@@ -32,11 +32,11 @@ export const Route = createFileRoute("/")({
 
 const products = [
   { name: "Vacuum Bags", img: vacuum, desc: "Embossed food-grade vacuum bags that lock in freshness and extend shelf life for meats, seafood and prepped ingredients." },
-  { name: "Nitrile Gloves", img: nitrile, desc: "Powder-free, latex-free nitrile gloves offering strong puncture resistance and comfortable all-day wear." },
+  { name: "Nitrile Gloves", img: nitrile, images: [nitrile, nitrileBlack], desc: "Powder-free, latex-free nitrile gloves offering strong puncture resistance and comfortable all-day wear." },
   { name: "Disposable Aprons", img: aprons, desc: "Lightweight, waterproof disposable aprons that keep uniforms clean and support hygienic food handling." },
   { name: "Cling Film", img: cling, desc: "Clear, high-cling food wrap rolls for sealing, storing and portioning ingredients in busy kitchens." },
   { name: "Aluminium Foil", img: foil, desc: "Heavy-duty aluminium foil rolls for cooking, baking, wrapping and heat retention." },
-  { name: "Disposable Hair Nets", img: hairnet, desc: "Soft, breathable non-woven hair nets that help meet food safety and hygiene requirements." },
+  { name: "Disposable Hair Nets", img: hairnet, images: [hairnet, hairnetBlue], desc: "Soft, breathable non-woven hair nets that help meet food safety and hygiene requirements." },
   { name: "HDPE Gloves", img: hdpe, desc: "Economical clear HDPE gloves ideal for quick food prep, serving and frequent glove changes." },
 ];
 
