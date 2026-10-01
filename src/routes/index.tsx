@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
-import { Menu, X, Phone, Mail, MessageCircle, MapPin, ShieldCheck, Truck, Award, ArrowRight, CheckCircle2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X, Mail, MessageCircle, MessagesSquare, ShieldCheck, Truck, Award, ArrowRight, CheckCircle2 } from "lucide-react";
 import hero from "@/assets/hero-kitchen.jpg";
 import vacuum from "@/assets/vacuum-bags.jpg";
 import nitrile from "@/assets/nitrile-gloves.jpg";
@@ -240,51 +240,86 @@ function About() {
   );
 }
 
-const inputCls =
-  "w-full rounded-xl border border-input bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground/70 focus:border-accent focus:ring-4 focus:ring-accent/15";
+const WECHAT_ID = "weixinhao_123";
 
 function Contact() {
-  const [sent, setSent] = useState(false);
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSent(true);
-    e.currentTarget.reset();
+  const [copied, setCopied] = useState(false);
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => { if (copyTimer.current) clearTimeout(copyTimer.current); }, []);
+
+  const copyWeChat = async () => {
+    try {
+      await navigator.clipboard.writeText(WECHAT_ID);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = WECHAT_ID;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    if (copyTimer.current) clearTimeout(copyTimer.current);
+    copyTimer.current = setTimeout(() => setCopied(false), 3000);
   };
-  const info = [
-    [Phone, "Phone", "+60 X-XXXX XXXX"],
-    [Mail, "Email", "sales@saworldglobal.com"],
-    [MessageCircle, "WhatsApp", "+60 1X-XXX XXXX"],
-    [MapPin, "Address", "Address to be updated, Malaysia"],
-  ] as const;
+
+  const buttons = [
+    {
+      label: "WhatsApp",
+      detail: "+60 12-345 6789",
+      href: "https://wa.me/60123456789",
+      icon: MessageCircle,
+    },
+    {
+      label: "WeChat",
+      detail: WECHAT_ID,
+      action: copyWeChat,
+      icon: MessagesSquare,
+    },
+    {
+      label: "Email",
+      detail: "info@saworldglobal.com",
+      href: "mailto:info@saworldglobal.com",
+      icon: Mail,
+    },
+  ];
+
   return (
     <section id="contact" className="scroll-mt-20 py-20 lg:py-28">
       <div className="mx-auto max-w-4xl px-5 lg:px-8">
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-accent">Contact</p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">Get in Touch</h2>
-          <p className="mt-4 text-muted-foreground">Tell us about your kitchen's needs and our team will get back to you with a quotation.</p>
+          <p className="mt-4 text-muted-foreground">Reach us on WhatsApp or WeChat, or send us an email — we'll get back to you with a quotation.</p>
         </div>
-        <form onSubmit={onSubmit} className="mt-12 grid gap-5 rounded-3xl border border-border bg-card p-6 shadow-soft sm:grid-cols-2 sm:p-10">
-          <label className="grid gap-2 text-sm font-medium text-primary">Name<input required name="name" maxLength={100} className={inputCls} placeholder="Your full name" /></label>
-          <label className="grid gap-2 text-sm font-medium text-primary">Company Name<input name="company" maxLength={120} className={inputCls} placeholder="Your company" /></label>
-          <label className="grid gap-2 text-sm font-medium text-primary">Email<input required type="email" name="email" maxLength={255} className={inputCls} placeholder="you@company.com" /></label>
-          <label className="grid gap-2 text-sm font-medium text-primary">Phone / WhatsApp<input required type="tel" name="phone" maxLength={30} className={inputCls} placeholder="+60 ..." /></label>
-          <label className="grid gap-2 text-sm font-medium text-primary sm:col-span-2">Message<textarea required name="message" rows={5} maxLength={1000} className={inputCls} placeholder="Products, quantities, delivery location..." /></label>
-          <div className="flex flex-col items-start gap-3 sm:col-span-2 sm:flex-row sm:items-center">
-            <button type="submit" className="rounded-full bg-primary px-8 py-3.5 font-semibold text-primary-foreground shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift">
-              Send Message
-            </button>
-            {sent && <p className="flex items-center gap-2 text-sm font-medium text-accent"><CheckCircle2 className="h-4 w-4" /> Thank you! We'll be in touch shortly.</p>}
-          </div>
-        </form>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {info.map(([Icon, label, val]) => (
-            <div key={label} className="rounded-2xl bg-secondary p-5">
-              <Icon className="h-5 w-5 text-accent" />
-              <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</p>
-              <p className="mt-1 text-sm font-semibold text-primary">{val}</p>
-            </div>
-          ))}
+        <div className="mx-auto mt-12 grid max-w-3xl gap-5 sm:grid-cols-3">
+          {buttons.map(({ label, detail, href, action, icon: Icon }) => {
+            const cls =
+              "flex w-full select-none flex-col items-center gap-3 rounded-3xl border border-border bg-card px-6 py-8 shadow-soft transition-all duration-150 ease-out hover:-translate-y-1 hover:border-accent/40 hover:shadow-lift active:translate-y-0.5 active:shadow-none focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/30";
+            const content = (
+              <>
+                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-accent-soft text-accent transition-transform duration-150 group-active:scale-95">
+                  <Icon className="h-7 w-7" />
+                </span>
+                <span className="text-base font-bold text-primary">{label}</span>
+                <span className={`text-sm font-medium ${copied && label === "WeChat" ? "text-accent" : "text-muted-foreground"}`}>
+                  {copied && label === "WeChat" ? "WeChat ID copied!" : detail}
+                </span>
+              </>
+            );
+            return href ? (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className={`group cursor-pointer ${cls}`}>
+                {content}
+              </a>
+            ) : (
+              <button key={label} type="button" onClick={action} className={`group cursor-pointer ${cls}`}>
+                {content}
+              </button>
+            );
+          })}
         </div>
       </div>
     </section>
