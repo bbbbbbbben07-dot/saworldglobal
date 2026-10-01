@@ -191,18 +191,23 @@ function ProductCard({ p, compact = false }: { p: (typeof products)[number]; com
 }
 
 function Products() {
-  const mobileSlides = Array.from({ length: Math.ceil(products.length / 2) }, (_, index) => products.slice(index * 2, index * 2 + 2));
+  const indicatorCount = Math.ceil(products.length / 2);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
 
   const updateActiveSlide = () => {
     const carousel = carouselRef.current;
-    if (!carousel || carousel.clientWidth === 0) return;
-    setActiveSlide(Math.round(carousel.scrollLeft / carousel.clientWidth));
+    if (!carousel) return;
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    if (maxScroll <= 0) return;
+    setActiveSlide(Math.round((carousel.scrollLeft / maxScroll) * (indicatorCount - 1)));
   };
 
   const goToSlide = (index: number) => {
-    carouselRef.current?.scrollTo({ left: index * (carouselRef.current?.clientWidth ?? 0), behavior: "smooth" });
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    carousel.scrollTo({ left: maxScroll * (index / (indicatorCount - 1)), behavior: "smooth" });
     setActiveSlide(index);
   };
 
@@ -218,19 +223,17 @@ function Products() {
           <div
             ref={carouselRef}
             onScroll={updateActiveSlide}
-            className="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="flex gap-3 overflow-x-auto overscroll-x-contain scroll-smooth pb-4 pr-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             aria-label="Products carousel"
           >
-            {mobileSlides.map((slide, slideIndex) => (
-              <div key={slideIndex} className="grid w-full shrink-0 snap-start grid-cols-2 items-stretch gap-3 px-px">
-                {slide.map((p) => (
-                  <ProductCard key={p.name} p={p} compact />
-                ))}
+            {products.map((p) => (
+              <div key={p.name} className="w-[44%] shrink-0 py-px first:pl-px">
+                <ProductCard p={p} compact />
               </div>
             ))}
           </div>
           <div className="mt-3 flex items-center justify-center gap-2" role="group" aria-label="Choose product slide">
-            {mobileSlides.map((_, index) => (
+            {Array.from({ length: indicatorCount }, (_, index) => (
               <Button
                 key={index}
                 type="button"
