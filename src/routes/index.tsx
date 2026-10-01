@@ -165,7 +165,7 @@ function ProductCard({ p, compact = false }: { p: (typeof products)[number]; com
         ))}
       </div>
       {images.length > 1 && (
-        <div className="flex items-center justify-center gap-1.5 pt-3">
+        <div className="flex items-center justify-center gap-0.5 pt-3">
           {images.map((_, i) => (
             <Button
               key={i}
@@ -173,9 +173,12 @@ function ProductCard({ p, compact = false }: { p: (typeof products)[number]; com
               variant="ghost"
               size="icon"
               aria-label={`Show image ${i + 1} of ${p.name}`}
+              aria-current={i === index ? "true" : undefined}
               onClick={() => setIndex(i)}
-              className={`h-5 min-h-5 rounded-full p-0 transition-all duration-500 ${i === index ? "w-5 min-w-5 bg-accent hover:bg-accent" : "w-3 min-w-3 bg-muted-foreground/30 hover:bg-muted-foreground/50"}`}
-            />
+              className="h-6 min-h-6 w-6 min-w-6 rounded-full bg-transparent p-0 hover:bg-transparent"
+            >
+              <span className={`h-1.5 rounded-full transition-all duration-500 ease-out ${i === index ? "w-4 bg-accent" : "w-1.5 bg-muted-foreground/25"}`} />
+            </Button>
           ))}
         </div>
       )}
@@ -232,7 +235,7 @@ function Products() {
               </div>
             ))}
           </div>
-          <div className="mt-3 flex items-center justify-center gap-2" role="group" aria-label="Choose product slide">
+          <div className="mt-3 flex items-center justify-center gap-0.5" role="group" aria-label="Choose product slide">
             {Array.from({ length: indicatorCount }, (_, index) => (
               <Button
                 key={index}
@@ -242,8 +245,10 @@ function Products() {
                 aria-label={`Show product slide ${index + 1}`}
                 aria-current={activeSlide === index ? "true" : undefined}
                 onClick={() => goToSlide(index)}
-                className={`h-6 min-h-6 rounded-full p-0 transition-all duration-300 ${activeSlide === index ? "w-7 min-w-7 bg-accent hover:bg-accent" : "w-4 min-w-4 bg-muted-foreground/25 hover:bg-muted-foreground/40"}`}
-              />
+                className="h-7 min-h-7 w-7 min-w-7 rounded-full bg-transparent p-0 hover:bg-transparent"
+              >
+                <span className={`h-1.5 rounded-full transition-all duration-500 ease-out ${activeSlide === index ? "w-5 bg-accent" : "w-1.5 bg-muted-foreground/25"}`} />
+              </Button>
             ))}
           </div>
         </div>
