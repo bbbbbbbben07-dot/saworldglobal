@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Menu, X, Phone, Mail, MessageCircle, MapPin, ShieldCheck, Truck, Award, ArrowRight, CheckCircle2 } from "lucide-react";
 import hero from "@/assets/hero-kitchen.jpg";
 import vacuum from "@/assets/vacuum-bags.jpg";
@@ -8,7 +8,9 @@ import aprons from "@/assets/aprons.jpg";
 import cling from "@/assets/cling-film.jpg";
 import foil from "@/assets/aluminium-foil.jpg";
 import hairnet from "@/assets/hair-nets.jpg";
+import hairnetBlue from "@/assets/hair-nets-blue.jpg";
 import hdpe from "@/assets/hdpe-gloves.jpg";
+import nitrileBlack from "@/assets/nitrile-gloves-black.jpg";
 
 const TITLE = "SA WORLD GLOBAL — Food Packaging & Hygiene Supplies Malaysia";
 const DESC =
@@ -30,11 +32,11 @@ export const Route = createFileRoute("/")({
 
 const products = [
   { name: "Vacuum Bags", img: vacuum, desc: "Embossed food-grade vacuum bags that lock in freshness and extend shelf life for meats, seafood and prepped ingredients." },
-  { name: "Nitrile Gloves", img: nitrile, desc: "Powder-free, latex-free nitrile gloves offering strong puncture resistance and comfortable all-day wear." },
+  { name: "Nitrile Gloves", img: nitrile, images: [nitrile, nitrileBlack], desc: "Powder-free, latex-free nitrile gloves offering strong puncture resistance and comfortable all-day wear." },
   { name: "Disposable Aprons", img: aprons, desc: "Lightweight, waterproof disposable aprons that keep uniforms clean and support hygienic food handling." },
   { name: "Cling Film", img: cling, desc: "Clear, high-cling food wrap rolls for sealing, storing and portioning ingredients in busy kitchens." },
   { name: "Aluminium Foil", img: foil, desc: "Heavy-duty aluminium foil rolls for cooking, baking, wrapping and heat retention." },
-  { name: "Disposable Hair Nets", img: hairnet, desc: "Soft, breathable non-woven hair nets that help meet food safety and hygiene requirements." },
+  { name: "Disposable Hair Nets", img: hairnet, images: [hairnet, hairnetBlue], desc: "Soft, breathable non-woven hair nets that help meet food safety and hygiene requirements." },
   { name: "HDPE Gloves", img: hdpe, desc: "Economical clear HDPE gloves ideal for quick food prep, serving and frequent glove changes." },
 ];
 
@@ -135,6 +137,56 @@ function Hero() {
   );
 }
 
+function ProductCard({ p }: { p: (typeof products)[number] }) {
+  const images = p.images ?? [p.img];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (images.length < 2) return;
+    const timer = setInterval(() => setIndex((i) => (i + 1) % images.length), 4000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <article className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift">
+      <div className="relative overflow-hidden bg-background">
+        {images.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt={p.name}
+            loading="lazy"
+            width={1024}
+            height={1024}
+            aria-hidden={i !== index}
+            className={`aspect-square w-full object-cover transition-opacity duration-700 ease-in-out ${i === 0 ? "relative" : "absolute inset-0"} ${i === index ? "opacity-100" : "opacity-0"}`}
+          />
+        ))}
+      </div>
+      {images.length > 1 && (
+        <div className="flex items-center justify-center gap-1.5 pt-3">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Show image ${i + 1} of ${p.name}`}
+              onClick={() => setIndex(i)}
+              className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? "w-4 bg-accent" : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50"}`}
+            />
+          ))}
+        </div>
+      )}
+      <div className="flex flex-1 flex-col p-6 pt-4">
+        <h3 className="text-lg font-bold text-primary">{p.name}</h3>
+        <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
+        <span className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-primary">
+          <CheckCircle2 className="h-3.5 w-3.5 text-accent" /> Suitable for F&B & Central Kitchens
+        </span>
+      </div>
+    </article>
+  );
+}
+
 function Products() {
   return (
     <section id="products" className="scroll-mt-20 py-20 lg:py-28">
@@ -146,18 +198,7 @@ function Products() {
         </div>
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {products.map((p) => (
-            <article key={p.name} className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift">
-              <div className="overflow-hidden bg-background">
-                <img src={p.img} alt={p.name} loading="lazy" width={1024} height={1024} className="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" />
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-lg font-bold text-primary">{p.name}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-                <span className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-primary">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-accent" /> Suitable for F&B & Central Kitchens
-                </span>
-              </div>
-            </article>
+            <ProductCard key={p.name} p={p} />
           ))}
         </div>
       </div>
