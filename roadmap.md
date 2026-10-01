@@ -1,4 +1,4 @@
-- [x] Preserve the desktop product grid
-- [x] Add a two-product mobile swipe carousel
-- [x] Add synchronized mobile slide indicators
-- [x] Preserve nested product image sliders
+- [x] Keep free horizontal scrolling on mobile
+- [x] Show approximately two products plus the next card edge
+- [x] Keep position indicators synchronized with free scroll
+- [x] Preserve the desktop product grid and nested image sliders

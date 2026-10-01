@@ -9,4 +9,4 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Render the products as paired scroll-snap slides below the `sm` breakpoint and as the existing grid above it, so mobile browsing stays swipeable without changing desktop presentation.
+- Render products as freely scrollable, approximately two-card-wide items below the `sm` breakpoint and as the existing grid above it, so mobile users can stop anywhere and see the next card edge.
