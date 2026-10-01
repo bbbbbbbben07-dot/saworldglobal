@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Menu, X, Phone, Mail, MessageCircle, MapPin, ShieldCheck, Truck, Award, ArrowRight, CheckCircle2 } from "lucide-react";
 import hero from "@/assets/hero-kitchen.jpg";
 import vacuum from "@/assets/vacuum-bags.jpg";
@@ -8,7 +8,9 @@ import aprons from "@/assets/aprons.jpg";
 import cling from "@/assets/cling-film.jpg";
 import foil from "@/assets/aluminium-foil.jpg";
 import hairnet from "@/assets/hair-nets.jpg";
+import hairnetBlue from "@/assets/hair-nets-blue.jpg";
 import hdpe from "@/assets/hdpe-gloves.jpg";
+import nitrileBlack from "@/assets/nitrile-gloves-black.jpg";
 
 const TITLE = "SA WORLD GLOBAL — Food Packaging & Hygiene Supplies Malaysia";
 const DESC =
