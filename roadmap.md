@@ -1,0 +1,4 @@
+- [x] Preserve the desktop product grid
+- [x] Add a two-product mobile swipe carousel
+- [x] Add synchronized mobile slide indicators
+- [x] Preserve nested product image sliders
