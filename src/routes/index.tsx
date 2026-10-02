@@ -42,6 +42,9 @@ const products = [
   { name: "Aluminium Foil", img: foil, desc: "Heavy-duty aluminium foil rolls for cooking, baking, wrapping and heat retention." },
   { name: "Disposable Hair Nets", img: hairnet, images: [hairnet, hairnetBlue], desc: "Soft, breathable non-woven hair nets that help meet food safety and hygiene requirements." },
   { name: "HDPE Gloves", img: hdpe, desc: "Economical clear HDPE gloves ideal for quick food prep, serving and frequent glove changes." },
+  { name: "Disposable Face Masks (Normal / Hygiene)", img: disposableMasks, desc: "Lightweight 3-ply hygiene masks for everyday protection, helping maintain clean air and safe food handling in F&B environments." },
+  { name: "Medical Face Masks", img: medicalMasks, desc: "Medical-grade surgical masks with reliable filtration, meeting the protection standards required in commercial kitchens." },
+  { name: "Plastic Face Masks (Food Service)", img: faceShield, desc: "Transparent full-face shields with adjustable straps, offering clear visibility and splash protection during food handling." },
 ];
 
 const nav = [
