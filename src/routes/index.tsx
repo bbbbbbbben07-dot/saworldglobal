@@ -14,7 +14,7 @@ import hdpe from "@/assets/hdpe-gloves.jpg";
 import nitrileBlack from "@/assets/nitrile-gloves-black.jpg";
 import disposableMasks from "@/assets/face-masks-disposable.jpg";
 import medicalMasks from "@/assets/medical-masks.jpg";
-import faceShield from "@/assets/face-shield-mask.jpg";
+import faceShield from "@/assets/plastic-mouth-mask.jpg";
 
 const TITLE = "SA WORLD GLOBAL — Food Packaging & Hygiene Supplies Malaysia";
 const DESC =
