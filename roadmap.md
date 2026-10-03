@@ -2,3 +2,5 @@
 - [x] Show approximately two products plus the next card edge
 - [x] Keep position indicators synchronized with free scroll
 - [x] Preserve the desktop product grid and nested image sliders
+- [x] Show all products by default; only enable mobile scrolling and dots when the row overflows
+- [x] Keep the tablet and desktop products in the existing grid

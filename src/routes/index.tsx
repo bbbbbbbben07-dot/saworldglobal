@@ -203,6 +203,21 @@ function Products() {
   const indicatorCount = Math.ceil(products.length / 2);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+    const measure = () => {
+      const overflowing = carousel.scrollWidth > carousel.clientWidth + 1;
+      setIsOverflowing(overflowing);
+      if (!overflowing) setActiveSlide(0);
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(carousel);
+    return () => observer.disconnect();
+  }, []);
 
   const updateActiveSlide = () => {
     const carousel = carouselRef.current;
@@ -214,7 +229,7 @@ function Products() {
 
   const goToSlide = (index: number) => {
     const carousel = carouselRef.current;
-    if (!carousel) return;
+    if (!carousel || !isOverflowing || indicatorCount < 2) return;
     const maxScroll = carousel.scrollWidth - carousel.clientWidth;
     carousel.scrollTo({ left: maxScroll * (index / (indicatorCount - 1)), behavior: "smooth" });
     setActiveSlide(index);
@@ -232,8 +247,8 @@ function Products() {
           <div
             ref={carouselRef}
             onScroll={updateActiveSlide}
-            className="flex gap-3 overflow-x-auto overscroll-x-contain scroll-smooth pb-4 pr-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            aria-label="Products carousel"
+            className={`flex gap-3 pb-4 ${isOverflowing ? "overflow-x-auto overscroll-x-contain scroll-smooth pr-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" : "overflow-x-hidden"}`}
+            aria-label={isOverflowing ? "Products carousel" : "Products"}
           >
             {products.map((p) => (
               <div key={p.name} className="w-[44%] shrink-0 py-px first:pl-px">
@@ -241,7 +256,7 @@ function Products() {
               </div>
             ))}
           </div>
-          <div className="mt-3 flex items-center justify-center gap-0.5" role="group" aria-label="Choose product slide">
+          {isOverflowing && indicatorCount > 1 && <div className="mt-3 flex items-center justify-center gap-0.5" role="group" aria-label="Choose product slide">
             {Array.from({ length: indicatorCount }, (_, index) => (
               <Button
                 key={index}
@@ -256,7 +271,7 @@ function Products() {
                 <span className={`h-1.5 rounded-full transition-all duration-500 ease-out ${activeSlide === index ? "w-5 bg-accent" : "w-1.5 bg-muted-foreground/25"}`} />
               </Button>
             ))}
-          </div>
+          </div>}
         </div>
         <div className="mt-14 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {products.map((p) => (
