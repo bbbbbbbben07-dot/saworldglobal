@@ -11,3 +11,4 @@
 
 - Render products as freely scrollable, approximately two-card-wide items below the `sm` breakpoint and as the existing grid above it, so mobile users can stop anywhere and see the next card edge.
 - Enable mobile product scrolling and its navigation dots only when the product row actually overflows, so short product lists display normally.
+- Group the catalog visibly by product category without hiding any items by default; keep each small-screen category independently scrollable only if it overflows, so short groups need no sliding.
