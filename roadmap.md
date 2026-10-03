@@ -4,3 +4,5 @@
 - [x] Preserve the desktop product grid and nested image sliders
 - [x] Show all products by default; only enable mobile scrolling and dots when the row overflows
 - [x] Keep the tablet and desktop products in the existing grid
+- [x] Group every product visibly into Gloves, Masks, Hair Nets, and Packaging & Kitchen Supplies
+- [x] Show short groups without mobile scrolling; keep free scrolling and dots only for overflowing groups

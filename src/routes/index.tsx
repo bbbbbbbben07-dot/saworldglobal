@@ -47,6 +47,13 @@ const products = [
   { name: "Plastic Face Masks (Food Service)", img: faceShield, desc: "Transparent full-face shields with adjustable straps, offering clear visibility and splash protection during food handling." },
 ];
 
+const productCategories = [
+  { name: "Gloves", productNames: ["Nitrile Gloves", "HDPE Gloves"] },
+  { name: "Masks", productNames: ["Disposable Face Masks (Normal / Hygiene)", "Medical Face Masks", "Plastic Face Masks (Food Service)"] },
+  { name: "Hair Nets", productNames: ["Disposable Hair Nets"] },
+  { name: "Packaging & Kitchen Supplies", productNames: ["Vacuum Bags", "Cling Film", "Aluminium Foil", "Disposable Aprons"] },
+];
+
 const nav = [
   { label: "Home", href: "#home" },
   { label: "Products", href: "#products" },
@@ -199,8 +206,8 @@ function ProductCard({ p, compact = false }: { p: (typeof products)[number]; com
   );
 }
 
-function Products() {
-  const indicatorCount = Math.ceil(products.length / 2);
+function ProductCategory({ name, items }: { name: string; items: (typeof products)[number][] }) {
+  const indicatorCount = Math.ceil(items.length / 2);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeSlide, setActiveSlide] = useState(0);
   const [isOverflowing, setIsOverflowing] = useState(false);
@@ -216,8 +223,9 @@ function Products() {
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(carousel);
+    for (const child of carousel.children) observer.observe(child);
     return () => observer.disconnect();
-  }, []);
+  }, [items.length]);
 
   const updateActiveSlide = () => {
     const carousel = carouselRef.current;
@@ -236,21 +244,19 @@ function Products() {
   };
 
   return (
-    <section id="products" className="scroll-mt-20 py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-accent">What We Supply</p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">Our Products</h2>
-          <p className="mt-4 text-muted-foreground">Essential packaging and hygiene supplies built for the daily demands of commercial kitchens.</p>
-        </div>
-        <div className="mt-10 sm:hidden">
+    <div className="min-w-0">
+      <div className="mb-5 flex min-w-0 items-center gap-4 border-b border-border pb-3">
+        <h3 className="min-w-0 text-xl font-bold text-primary sm:text-2xl">{name}</h3>
+        <span className="h-px flex-1 bg-border" aria-hidden="true" />
+      </div>
+      <div className="sm:hidden">
           <div
             ref={carouselRef}
             onScroll={updateActiveSlide}
-            className={`flex gap-3 pb-4 ${isOverflowing ? "overflow-x-auto overscroll-x-contain scroll-smooth pr-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" : "overflow-x-hidden"}`}
-            aria-label={isOverflowing ? "Products carousel" : "Products"}
+            className="flex gap-3 overflow-x-auto overscroll-x-contain scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            aria-label={isOverflowing ? `${name} products carousel` : `${name} products`}
           >
-            {products.map((p) => (
+            {items.map((p) => (
               <div key={p.name} className="w-[44%] shrink-0 py-px first:pl-px">
                 <ProductCard p={p} compact />
               </div>
@@ -263,7 +269,7 @@ function Products() {
                 type="button"
                 variant="ghost"
                 size="icon"
-                aria-label={`Show product slide ${index + 1}`}
+                aria-label={`Show ${name} slide ${index + 1}`}
                 aria-current={activeSlide === index ? "true" : undefined}
                 onClick={() => goToSlide(index)}
                 className="h-7 min-h-7 w-7 min-w-7 rounded-full bg-transparent p-0 hover:bg-transparent"
@@ -272,10 +278,32 @@ function Products() {
               </Button>
             ))}
           </div>}
-        </div>
-        <div className="mt-14 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {products.map((p) => (
+      </div>
+      <div className="hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {items.map((p) => (
             <ProductCard key={p.name} p={p} />
+          ))}
+      </div>
+    </div>
+  );
+}
+
+function Products() {
+  return (
+    <section id="products" className="scroll-mt-20 py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-wider text-accent">What We Supply</p>
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">Our Products</h2>
+          <p className="mt-4 text-muted-foreground">Essential packaging and hygiene supplies built for the daily demands of commercial kitchens.</p>
+        </div>
+        <div className="mt-12 space-y-14 sm:mt-14 sm:space-y-16">
+          {productCategories.map(({ name, productNames }) => (
+            <ProductCategory
+              key={name}
+              name={name}
+              items={productNames.map((productName) => products.find((product) => product.name === productName)).filter((product): product is (typeof products)[number] => product !== undefined)}
+            />
           ))}
         </div>
       </div>
