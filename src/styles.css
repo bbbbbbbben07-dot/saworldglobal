@@ -19,6 +19,7 @@
  */
 
 @theme inline {
+  --color-whatsapp: var(--whatsapp);
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --color-accent-soft: var(--accent-soft);
   --shadow-soft: var(--shadow-soft);
@@ -67,6 +68,7 @@
 
 :root {
   --radius: 1rem;
+  --whatsapp: oklch(0.78 0.19 152);
   --background: oklch(1 0 0);
   --foreground: oklch(0.25 0.06 250);
   --card: oklch(1 0 0);
@@ -105,6 +107,7 @@
 }
 
 .dark {
+  --whatsapp: oklch(0.78 0.19 152);
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(0.208 0.042 265.755);
