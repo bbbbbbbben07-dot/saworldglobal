@@ -313,33 +313,34 @@ function Products() {
 }
 
 function About() {
-  const stats = [
-    ["Consistent", "Quality across every batch"],
-    ["Competitive", "Pricing for bulk orders"],
-    ["Commercial", "Kitchen-standard products"],
+  const points = [
+    "Reliable supply for F&B and central kitchens",
+    "Consistent product quality and hygiene standards",
+    "Practical packaging and disposable solutions",
+    "Responsive support via WhatsApp, WeChat, and Email",
   ];
   return (
-    <section id="about" className="scroll-mt-20 bg-secondary py-20 lg:py-28">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2 lg:px-8">
+    <section id="about" className="scroll-mt-20 bg-secondary py-16 lg:py-20">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
         <div>
           <p className="text-sm font-semibold uppercase tracking-wider text-accent">Who We Are</p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">About SA WORLD GLOBAL</h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            We are a reliable supplier of high-quality food packaging and disposable hygiene products. We support F&B operators and central kitchens with consistent quality, competitive solutions, and products that meet commercial kitchen standards.
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            We are a reliable supplier of high-quality food packaging and disposable hygiene products, supporting F&B operators and central kitchens across Malaysia with consistent quality, competitive solutions, and commercial kitchen-standard products.
           </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-          {stats.map(([t, d]) => (
-            <div key={t} className="flex items-center gap-5 rounded-2xl bg-card p-6 shadow-soft">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground">
-                <CheckCircle2 className="h-6 w-6" />
-              </span>
-              <div>
-                <p className="font-bold text-primary">{t}</p>
-                <p className="text-sm text-muted-foreground">{d}</p>
-              </div>
-            </div>
-          ))}
+        <div className="lg:border-l lg:border-border lg:pl-16">
+          <p className="text-sm font-semibold uppercase tracking-wider text-accent">Why Choose Us</p>
+          <ul className="mt-5 space-y-4">
+            {points.map((point) => (
+              <li key={point} className="flex items-start gap-3.5">
+                <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-accent-soft">
+                  <CheckCircle2 className="h-4 w-4 text-accent" />
+                </span>
+                <span className="pt-1 font-medium text-foreground">{point}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
