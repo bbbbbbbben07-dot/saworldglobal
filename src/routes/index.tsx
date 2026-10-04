@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, Mail, MessageCircle, MessagesSquare, ShieldCheck, Truck, Award, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Menu, X, Mail, MessageCircle, MessagesSquare, ShieldCheck, Truck, Award, ArrowRight, CheckCircle2, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import hero from "@/assets/hero-kitchen.jpg";
 import vacuum from "@/assets/vacuum-bags.jpg";
@@ -314,13 +314,13 @@ function Products() {
 
 function About() {
   const points = [
-    "Reliable supply for F&B and central kitchens",
-    "Consistent product quality and hygiene standards",
-    "Practical packaging and disposable solutions",
-    "Responsive support via WhatsApp, WeChat, and Email",
+    { icon: Truck, text: "Reliable supply for F&B and central kitchens" },
+    { icon: ShieldCheck, text: "Consistent product quality and hygiene standards" },
+    { icon: Package, text: "Practical packaging and disposable solutions" },
+    { icon: MessagesSquare, text: "Responsive support via WhatsApp, WeChat, and Email" },
   ];
   return (
-    <section id="about" className="scroll-mt-20 bg-secondary py-16 lg:py-20">
+    <section id="about" className="scroll-mt-20 bg-secondary py-14 lg:py-16">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-2 lg:gap-16 lg:px-8">
         <div>
           <p className="text-sm font-semibold uppercase tracking-wider text-accent">Who We Are</p>
@@ -331,13 +331,13 @@ function About() {
         </div>
         <div className="lg:border-l lg:border-border lg:pl-16">
           <p className="text-sm font-semibold uppercase tracking-wider text-accent">Why Choose Us</p>
-          <ul className="mt-5 space-y-4">
-            {points.map((point) => (
-              <li key={point} className="flex items-start gap-3.5">
-                <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-accent-soft">
-                  <CheckCircle2 className="h-4 w-4 text-accent" />
+          <ul className="mt-4 space-y-2.5">
+            {points.map(({ icon: Icon, text }) => (
+              <li key={text} className="flex items-center gap-4 rounded-2xl border border-border bg-card px-4 py-2.5 shadow-soft">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-accent-soft">
+                  <Icon className="h-[18px] w-[18px] text-accent" />
                 </span>
-                <span className="pt-1 font-medium text-foreground">{point}</span>
+                <span className="text-sm font-medium leading-snug text-foreground sm:text-[15px]">{text}</span>
               </li>
             ))}
           </ul>
