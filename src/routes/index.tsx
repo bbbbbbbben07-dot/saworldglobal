@@ -15,6 +15,7 @@ import nitrileBlack from "@/assets/nitrile-gloves-black.jpg";
 import disposableMasks from "@/assets/face-masks-disposable.jpg";
 import medicalMasks from "@/assets/medical-masks.jpg";
 import faceShield from "@/assets/plastic-mouth-mask.jpg";
+import logoMark from "@/assets/sa-logo-mark.png.asset.json";
 
 const TITLE = "SA WORLD GLOBAL — Food Packaging & Hygiene Supplies Malaysia";
 const DESC =
@@ -64,8 +65,8 @@ const nav = [
 function Logo() {
   return (
     <a href="#home" className="flex items-center gap-3">
-      <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary text-sm font-extrabold text-primary-foreground">
-        SA
+      <span className="grid h-10 w-11 place-items-center rounded-xl bg-primary p-2">
+        <img src={logoMark.url} alt="SA WORLD GLOBAL logo" className="h-full w-full object-contain" />
       </span>
       <span className="text-base font-extrabold tracking-tight text-primary sm:text-lg">SA WORLD GLOBAL</span>
     </a>
