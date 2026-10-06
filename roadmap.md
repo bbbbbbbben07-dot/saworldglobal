@@ -10,3 +10,4 @@
 - [x] Show a people-free, bright modern central kitchen scene in the Hero, with headline, subheadline and CTAs unchanged
 - [x] Add naturally placed supplies to the Hero kitchen scene: vacuum-packed meat, cling-film vegetables, nitrile gloves, hanging apron, foil roll, hair net, mask box
 - [x] Show a commercial cling film dispenser box with a slider cutter on the Hero counter, keeping the wrapped food and other props
+- [x] Reduce the Hero to a single cling film dispenser box with a clearly visible slider cutter, keeping the other props
