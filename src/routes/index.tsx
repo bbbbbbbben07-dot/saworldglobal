@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, Mail, MessageCircle, MessagesSquare, ShieldCheck, Truck, Award, ArrowRight, CheckCircle2, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import hero from "@/assets/hero-kitchen.jpg";
+import hero from "@/assets/hero-products.jpg";
 import vacuum from "@/assets/vacuum-bags.jpg";
 import nitrile from "@/assets/nitrile-gloves.jpg";
 import aprons from "@/assets/aprons.jpg";
@@ -145,7 +145,7 @@ function Hero() {
         </div>
         <div className="relative">
           <div className="absolute -inset-4 rounded-[2rem] bg-accent/10 blur-2xl" />
-          <img src={hero} alt="Central kitchen staff vacuum-packing food" width={1600} height={1104} className="relative aspect-[4/3] w-full rounded-3xl object-cover shadow-lift" />
+          <img src={hero} alt="Food packaging and hygiene supplies including vacuum bags, gloves, aprons, cling film, aluminium foil, face masks and hair nets" width={1536} height={1152} className="relative aspect-[4/3] w-full rounded-3xl object-cover shadow-lift" />
         </div>
       </div>
     </section>

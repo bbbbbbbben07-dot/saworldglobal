@@ -6,3 +6,5 @@
 - [x] Keep the tablet and desktop products in the existing grid
 - [x] Group every product visibly into Gloves, Masks, Hair Nets, and Packaging & Kitchen Supplies
 - [x] Show short groups without mobile scrolling; keep free scrolling and dots only for overflowing groups
+- [x] Present each Why Choose Us point in its own bordered card with an icon on the left and text on the right
+- [x] Replace the Hero kitchen photo with a people-free product collage visual in the navy + teal style
