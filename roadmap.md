@@ -8,3 +8,4 @@
 - [x] Show short groups without mobile scrolling; keep free scrolling and dots only for overflowing groups
 - [x] Present each Why Choose Us point in its own bordered card with an icon on the left and text on the right
 - [x] Show a people-free, bright modern central kitchen scene in the Hero, with headline, subheadline and CTAs unchanged
+- [x] Add naturally placed supplies to the Hero kitchen scene: vacuum-packed meat, cling-film vegetables, nitrile gloves, hanging apron, foil roll, hair net, mask box
