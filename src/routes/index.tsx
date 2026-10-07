@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, Mail, MessageCircle, MessagesSquare, ShieldCheck, Truck, Award, ArrowRight, CheckCircle2, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import hero from "@/assets/hero-kitchen-clingfilm-single.jpg";
+import hero from "@/assets/hero-kitchen-clingfilm-half.jpg";
 import vacuum from "@/assets/vacuum-bags.jpg";
 import nitrile from "@/assets/nitrile-gloves.jpg";
 import aprons from "@/assets/aprons.jpg";
