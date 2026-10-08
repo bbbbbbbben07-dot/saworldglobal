@@ -48,7 +48,7 @@ export function ProductDetail({ product }: { product: DetailProduct }) {
         <span aria-current="page" className="text-primary">{product.name}</span>
       </nav>
 
-      <div className="mb-12 mt-5 lg:mb-14">
+      <div className="mt-8 mb-8">
         <BackToProductsLink />
       </div>
 
