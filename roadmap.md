@@ -15,3 +15,4 @@
 - [x] Link the Nitrile Gloves card and preserve shared navigation and Back to Products
 - [x] Verify desktop, tablet and mobile product detail flow
 - [x] Add a clear Back to Products button near the top of the product detail page, keeping the breadcrumb and the bottom button
+- [x] Space the product detail page evenly: breadcrumb, back link, product section, specifications and bottom button, on desktop, tablet and mobile
