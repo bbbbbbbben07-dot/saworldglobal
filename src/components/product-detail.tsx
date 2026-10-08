@@ -12,6 +12,17 @@ type DetailProduct = {
   specifications: { label: string; value: string; pending?: boolean }[];
 };
 
+function BackToProducts({ className = "" }: { className?: string }) {
+  return (
+    <Button asChild variant="outline" className={`group h-11 rounded-full border-primary/20 px-5 text-primary transition-all hover:-translate-y-0.5 hover:border-accent hover:bg-accent-soft hover:text-primary hover:shadow-soft active:translate-y-0.5 active:shadow-none motion-reduce:transform-none motion-reduce:transition-none ${className}`}>
+      <Link to="/" hash="products">
+        <ArrowLeft className="transition-transform duration-300 group-hover:-translate-x-0.5 motion-reduce:transform-none" />
+        Back to Products
+      </Link>
+    </Button>
+  );
+}
+
 export function ProductDetail({ product }: { product: DetailProduct }) {
   const [activeImage, setActiveImage] = useState(0);
   useEffect(() => {
