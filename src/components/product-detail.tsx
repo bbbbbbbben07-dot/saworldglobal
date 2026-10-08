@@ -12,9 +12,18 @@ type DetailProduct = {
   specifications: { label: string; value: string; pending?: boolean }[];
 };
 
-function BackToProducts({ className = "" }: { className?: string }) {
+function BackToProductsLink() {
   return (
-    <Button asChild variant="outline" className={`group h-11 rounded-full border-primary/20 px-5 text-primary transition-all hover:-translate-y-0.5 hover:border-accent hover:bg-accent-soft hover:text-primary hover:shadow-soft active:translate-y-0.5 active:shadow-none motion-reduce:transform-none motion-reduce:transition-none ${className}`}>
+    <Link to="/" hash="products" className="group -ml-1.5 inline-flex items-center gap-1.5 rounded-full px-1.5 py-1 text-sm font-medium text-primary/65 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 motion-reduce:transition-none">
+      <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1 motion-reduce:transform-none" />
+      <span className="underline-offset-4 group-hover:underline">Back to Products</span>
+    </Link>
+  );
+}
+
+function BackToProductsButton() {
+  return (
+    <Button asChild variant="outline" className="group h-11 rounded-full border-primary/20 px-5 text-primary transition-all hover:-translate-y-0.5 hover:border-accent hover:bg-accent-soft hover:text-primary hover:shadow-soft active:translate-y-0.5 active:shadow-none motion-reduce:transform-none motion-reduce:transition-none">
       <Link to="/" hash="products">
         <ArrowLeft className="transition-transform duration-300 group-hover:-translate-x-0.5 motion-reduce:transform-none" />
         Back to Products
@@ -33,14 +42,14 @@ export function ProductDetail({ product }: { product: DetailProduct }) {
 
   return (
     <main className="mx-auto w-full max-w-7xl px-5 pb-12 pt-6 lg:px-8 lg:pb-16 lg:pt-8">
-      <nav aria-label="Breadcrumb" className="mb-4 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+      <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
         <Link to="/" hash="products" className="transition-colors hover:text-accent">Products</Link>
         <span aria-hidden="true">/</span>
         <span aria-current="page" className="text-primary">{product.name}</span>
       </nav>
 
-      <div className="mb-8">
-        <BackToProducts />
+      <div className="mb-9 mt-2 lg:mb-11">
+        <BackToProductsLink />
       </div>
 
       <section aria-labelledby="product-title" className="grid items-center gap-8 md:grid-cols-2 lg:gap-16">
