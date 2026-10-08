@@ -39,7 +39,7 @@ const products = [
   { name: "Vacuum Bags", img: vacuum, desc: "Embossed food-grade vacuum bags that lock in freshness and extend shelf life for meats, seafood and prepped ingredients." },
   { name: "Nitrile Gloves", img: nitrile, images: [nitrile, nitrileBlack], desc: "Powder-free, latex-free nitrile gloves offering strong puncture resistance and comfortable all-day wear." },
   { name: "Disposable Aprons", img: aprons, desc: "Lightweight, waterproof disposable aprons that keep uniforms clean and support hygienic food handling." },
-  { name: "Cling Film", img: cling, desc: "Clear, high-cling food wrap rolls for sealing, storing and portioning ingredients in busy kitchens." },
+  { name: "Cling Film", img: cling, imgClass: "scale-[0.82]", desc: "Clear, high-cling food wrap rolls for sealing, storing and portioning ingredients in busy kitchens." },
   { name: "Aluminium Foil", img: foil, desc: "Heavy-duty aluminium foil rolls for cooking, baking, wrapping and heat retention." },
   { name: "Disposable Hair Nets", img: hairnet, images: [hairnet, hairnetBlue], desc: "Soft, breathable non-woven hair nets that help meet food safety and hygiene requirements." },
   { name: "HDPE Gloves", img: hdpe, desc: "Economical clear HDPE gloves ideal for quick food prep, serving and frequent glove changes." },
@@ -174,7 +174,7 @@ function ProductCard({ p, compact = false }: { p: (typeof products)[number]; com
             width={1024}
             height={1024}
             aria-hidden={i !== index}
-            className={`aspect-square w-full object-cover transition-opacity duration-700 ease-in-out ${i === 0 ? "relative" : "absolute inset-0"} ${i === index ? "opacity-100" : "opacity-0"}`}
+            className={`aspect-square w-full object-cover ${"imgClass" in p ? p.imgClass : ""} transition-opacity duration-700 ease-in-out ${i === 0 ? "relative" : "absolute inset-0"} ${i === index ? "opacity-100" : "opacity-0"}`}
           />
         ))}
       </div>
