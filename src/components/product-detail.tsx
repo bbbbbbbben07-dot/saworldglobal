@@ -104,8 +104,8 @@ export function ProductDetail({ product }: { product: DetailProduct }) {
           ))}
         </dl>
       </section>
-      <div className="mt-8">
-        <BackToProducts />
+      <div className="mt-10">
+        <BackToProductsButton />
       </div>
     </main>
   );
