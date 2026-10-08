@@ -14,3 +14,4 @@
 - [x] Add a reusable Nitrile Gloves detail page with the existing image slider, specifications and WhatsApp inquiry
 - [x] Link the Nitrile Gloves card and preserve shared navigation and Back to Products
 - [x] Verify desktop, tablet and mobile product detail flow
+- [x] Add a clear Back to Products button near the top of the product detail page, keeping the breadcrumb and the bottom button
