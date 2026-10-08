@@ -33,11 +33,15 @@ export function ProductDetail({ product }: { product: DetailProduct }) {
 
   return (
     <main className="mx-auto w-full max-w-7xl px-5 pb-12 pt-6 lg:px-8 lg:pb-16 lg:pt-8">
-      <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+      <nav aria-label="Breadcrumb" className="mb-4 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
         <Link to="/" hash="products" className="transition-colors hover:text-accent">Products</Link>
         <span aria-hidden="true">/</span>
         <span aria-current="page" className="text-primary">{product.name}</span>
       </nav>
+
+      <div className="mb-8">
+        <BackToProducts />
+      </div>
 
       <section aria-labelledby="product-title" className="grid items-center gap-8 md:grid-cols-2 lg:gap-16">
         <div className="min-w-0">
@@ -92,9 +96,7 @@ export function ProductDetail({ product }: { product: DetailProduct }) {
         </dl>
       </section>
       <div className="mt-8">
-        <Button asChild variant="outline" className="h-11 rounded-full border-primary/20 px-5 text-primary hover:border-accent hover:bg-accent-soft hover:text-primary">
-          <Link to="/" hash="products"><ArrowLeft /> Back to Products</Link>
-        </Button>
+        <BackToProducts />
       </div>
     </main>
   );
