@@ -4,6 +4,7 @@ import { Mail, MessageCircle, MessagesSquare, ShieldCheck, Truck, Award, ArrowRi
 import { Button } from "@/components/ui/button";
 import hero from "@/assets/hero-kitchen-clingfilm-half.jpg";
 import { products } from "@/lib/products";
+import { FloatingWhatsApp } from "@/components/site-chrome";
 
 const TITLE = "SA WORLD GLOBAL — Food Packaging & Hygiene Supplies Malaysia";
 const DESC =

@@ -30,7 +30,7 @@ export const Route = createFileRoute("/products/$slug")({
 
 function ProductPage() {
   const { product } = Route.useLoaderData();
-  return <ProductDetail key={product.slug} product={product} />;
+  return <ProductDetail key={product.slug} product={{ ...product, images: product.images ?? [product.img], imageLabels: product.imageLabels ?? [product.name] }} />;
 }
 
 function ProductNotFound() {
