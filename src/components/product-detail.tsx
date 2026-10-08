@@ -41,18 +41,18 @@ export function ProductDetail({ product }: { product: DetailProduct }) {
   }, [product.images.length]);
 
   return (
-    <main className="mx-auto w-full max-w-7xl px-5 pb-12 pt-6 lg:px-8 lg:pb-16 lg:pt-8">
+    <main className="mx-auto w-full max-w-7xl px-5 pb-14 pt-8 lg:px-8 lg:pb-16 lg:pt-10">
       <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
         <Link to="/" hash="products" className="transition-colors hover:text-accent">Products</Link>
         <span aria-hidden="true">/</span>
         <span aria-current="page" className="text-primary">{product.name}</span>
       </nav>
 
-      <div className="mb-9 mt-2 lg:mb-11">
+      <div className="mb-12 mt-5 lg:mb-14">
         <BackToProductsLink />
       </div>
 
-      <section aria-labelledby="product-title" className="grid items-center gap-8 md:grid-cols-2 lg:gap-16">
+      <section aria-labelledby="product-title" className="grid items-center gap-10 md:grid-cols-2 lg:gap-20">
         <div className="min-w-0">
           <div className="relative aspect-square overflow-hidden rounded-3xl border border-border bg-card">
             {product.images.map((src, i) => (
@@ -93,7 +93,7 @@ export function ProductDetail({ product }: { product: DetailProduct }) {
         </div>
       </section>
 
-      <section aria-labelledby="specifications-title" className="mt-10 border-t border-border pt-8 lg:mt-12">
+      <section aria-labelledby="specifications-title" className="mt-14 border-t border-border pt-10 lg:mt-16">
         <h2 id="specifications-title" className="text-2xl font-bold text-primary">Product Specifications</h2>
         <dl className="mt-5 divide-y divide-border border-y border-border">
           {product.specifications.map(({ label, value, pending }) => (
@@ -104,7 +104,8 @@ export function ProductDetail({ product }: { product: DetailProduct }) {
           ))}
         </dl>
       </section>
-      <div className="mt-10">
+
+      <div className="mt-12">
         <BackToProductsButton />
       </div>
     </main>
