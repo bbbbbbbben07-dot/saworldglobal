@@ -41,14 +41,14 @@ export function ProductDetail({ product }: { product: DetailProduct }) {
   }, [product.images.length]);
 
   return (
-    <main className="mx-auto w-full max-w-7xl px-5 pb-16 pt-8 lg:px-8 lg:pb-20 lg:pt-10">
+    <main className="mx-auto w-full max-w-7xl px-5 pb-14 pt-8 lg:px-8 lg:pb-16 lg:pt-10">
       <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
         <Link to="/" hash="products" className="transition-colors hover:text-accent">Products</Link>
         <span aria-hidden="true">/</span>
         <span aria-current="page" className="text-primary">{product.name}</span>
       </nav>
 
-      <div className="mb-12 mt-5 lg:mb-16">
+      <div className="mb-12 mt-5 lg:mb-14">
         <BackToProductsLink />
       </div>
 
@@ -105,7 +105,7 @@ export function ProductDetail({ product }: { product: DetailProduct }) {
         </dl>
       </section>
 
-      <div className="mt-12 lg:mt-14">
+      <div className="mt-12">
         <BackToProductsButton />
       </div>
     </main>
