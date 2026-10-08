@@ -14,6 +14,7 @@ export const nitrileProduct = {
     { label: "Type", value: "Disposable" },
     { label: "Application", value: "F&B, central kitchens, food handling, hygiene use" },
     { label: "Features", value: "Durable, comfortable fit, suitable for commercial kitchen use" },
-    { label: "Packing", value: "To be confirmed", pending: true },
+    { label: "Packing", value: "100 pcs per box" },
+    { label: "Carton", value: "1 carton = 10 boxes" },
   ],
 };
