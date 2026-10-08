@@ -11,3 +11,6 @@
 - [x] Add naturally placed supplies to the Hero kitchen scene: vacuum-packed meat, cling-film vegetables, nitrile gloves, hanging apron, foil roll, hair net, mask box
 - [x] Show a commercial cling film dispenser box with a slider cutter on the Hero counter, keeping the wrapped food and other props
 - [x] Reduce the Hero to a single cling film dispenser box with a clearly visible slider cutter, keeping the other props
+- [ ] Add a reusable Nitrile Gloves detail page with the existing image slider, specifications and WhatsApp inquiry
+- [ ] Link the Nitrile Gloves card and preserve shared navigation and Back to Products
+- [ ] Verify desktop, tablet and mobile product detail flow
