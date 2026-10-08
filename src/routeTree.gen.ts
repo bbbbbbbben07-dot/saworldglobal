@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductsNitrileGlovesRouteImport } from './routes/products.nitrile-gloves'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductsNitrileGlovesRoute = ProductsNitrileGlovesRouteImport.update({
+  id: '/products/nitrile-gloves',
+  path: '/products/nitrile-gloves',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/products/nitrile-gloves': typeof ProductsNitrileGlovesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/products/nitrile-gloves': typeof ProductsNitrileGlovesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/products/nitrile-gloves': typeof ProductsNitrileGlovesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/products/nitrile-gloves'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/products/nitrile-gloves'
+  id: '__root__' | '/' | '/products/nitrile-gloves'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProductsNitrileGlovesRoute: typeof ProductsNitrileGlovesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/products/nitrile-gloves': {
+      id: '/products/nitrile-gloves'
+      path: '/products/nitrile-gloves'
+      fullPath: '/products/nitrile-gloves'
+      preLoaderRoute: typeof ProductsNitrileGlovesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProductsNitrileGlovesRoute: ProductsNitrileGlovesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
