@@ -3,18 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { Mail, MessageCircle, MessagesSquare, ShieldCheck, Truck, Award, ArrowRight, CheckCircle2, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import hero from "@/assets/hero-kitchen-clingfilm-half.jpg";
-import vacuum from "@/assets/vacuum-bags.jpg";
-import { nitrileProduct } from "@/lib/nitrile-product";
+import { products } from "@/lib/products";
 import { FloatingWhatsApp } from "@/components/site-chrome";
-import aprons from "@/assets/aprons.jpg";
-import cling from "@/assets/cling-film.jpg";
-import foil from "@/assets/aluminium-foil.jpg";
-import hairnet from "@/assets/hair-nets.jpg";
-import hairnetBlue from "@/assets/hair-nets-blue.jpg";
-import hdpe from "@/assets/hdpe-gloves.jpg";
-import disposableMasks from "@/assets/face-masks-disposable.jpg";
-import medicalMasks from "@/assets/medical-masks.jpg";
-import faceShield from "@/assets/plastic-mouth-mask.jpg";
 
 const TITLE = "SA WORLD GLOBAL — Food Packaging & Hygiene Supplies Malaysia";
 const DESC =
@@ -33,19 +23,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
-const products = [
-  { name: "Vacuum Bags", img: vacuum, desc: "Embossed food-grade vacuum bags that lock in freshness and extend shelf life for meats, seafood and prepped ingredients." },
-  nitrileProduct,
-  { name: "Disposable Aprons", img: aprons, desc: "Lightweight, waterproof disposable aprons that keep uniforms clean and support hygienic food handling." },
-  { name: "Cling Film", img: cling, desc: "Clear, high-cling food wrap rolls for sealing, storing and portioning ingredients in busy kitchens." },
-  { name: "Aluminium Foil", img: foil, desc: "Heavy-duty aluminium foil rolls for cooking, baking, wrapping and heat retention." },
-  { name: "Disposable Hair Nets", img: hairnet, images: [hairnet, hairnetBlue], desc: "Soft, breathable non-woven hair nets that help meet food safety and hygiene requirements." },
-  { name: "HDPE Gloves", img: hdpe, desc: "Economical clear HDPE gloves ideal for quick food prep, serving and frequent glove changes." },
-  { name: "Disposable Face Masks (Normal / Hygiene)", img: disposableMasks, desc: "Lightweight 3-ply hygiene masks for everyday protection, helping maintain clean air and safe food handling in F&B environments." },
-  { name: "Medical Face Masks", img: medicalMasks, desc: "Medical-grade surgical masks with reliable filtration, meeting the protection standards required in commercial kitchens." },
-  { name: "Plastic Face Masks (Food Service)", img: faceShield, desc: "Transparent full-face shields with adjustable straps, offering clear visibility and splash protection during food handling." },
-];
 
 const productCategories = [
   { name: "Packaging & Kitchen Supplies", productNames: ["Vacuum Bags", "Cling Film", "Aluminium Foil", "Disposable Aprons"] },
@@ -145,7 +122,7 @@ function ProductCard({ p, compact = false }: { p: (typeof products)[number]; com
         </div>
       )}
       <div className={`flex flex-1 flex-col ${compact ? "p-3 pt-3" : "p-6 pt-4"}`}>
-        <h3 className={`${compact ? "text-sm" : "text-lg"} font-bold text-primary`}>{p.name === "Nitrile Gloves" ? <Link to="/products/nitrile-gloves" className="after:absolute after:inset-0 after:z-10 after:rounded-3xl focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-accent">{p.name}</Link> : p.name}</h3>
+        <h3 className={`${compact ? "text-sm" : "text-lg"} font-bold text-primary`}><Link to="/products/$slug" params={{ slug: p.slug }} className="after:absolute after:inset-0 after:z-10 after:rounded-3xl focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-accent">{p.name}</Link></h3>
         <p className={`${compact ? "mt-1.5 text-[11px] leading-4" : "mt-2 text-sm leading-relaxed"} flex-1 text-muted-foreground`}>{p.desc}</p>
         <span className={`${compact ? "mt-3 gap-1 px-2 py-1 text-[9px] leading-3" : "mt-5 gap-1.5 px-3 py-1 text-xs"} inline-flex w-fit items-start rounded-full bg-accent-soft font-semibold text-primary`}>
           <CheckCircle2 className={`${compact ? "mt-px h-3 w-3" : "h-3.5 w-3.5"} shrink-0 text-accent`} /> Suitable for F&B & Central Kitchens
