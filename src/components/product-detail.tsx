@@ -52,7 +52,7 @@ export function ProductDetail({ product }: { product: DetailProduct }) {
         <BackToProductsLink />
       </div>
 
-      <section aria-labelledby="product-title" className="grid items-center gap-10 md:grid-cols-2 lg:items-start lg:gap-20">
+      <section aria-labelledby="product-title" className="grid items-center gap-10 md:grid-cols-2 lg:gap-20">
         <div className="min-w-0">
           <div className="relative aspect-square overflow-hidden rounded-3xl border border-border bg-card">
             {product.images.map((src, i) => (
