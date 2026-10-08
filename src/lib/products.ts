@@ -43,17 +43,17 @@ export const products: CatalogProduct[] = [
   {
     slug: "disposable-aprons", name: "Disposable Aprons", img: aprons, inquiryNumber: INQUIRY,
     desc: "Lightweight, waterproof disposable aprons that keep uniforms clean and support hygienic food handling.",
-    specifications: spec("PE (polyethylene)", "White / Clear", "Disposable", "Food preparation, central kitchens, cleaning, hygiene use", "Lightweight, waterproof, single-use for hygiene", [["Packing", "100 pcs per pack"], ["Carton", "1 carton = 10 packs"]]),
+    specifications: spec("PE (polyethylene)", "White / Clear", "Disposable", "Food preparation, central kitchens, cleaning, hygiene use", "Lightweight, waterproof, single-use for hygiene", [["Product Size", "Length: 1400 mm · Width: 800 mm · Thickness: 0.03 mm"], ["Packing", "100 pcs per pack"], ["Carton", "1 carton = 10 packs"]]),
   },
   {
     slug: "cling-film", name: "Cling Film", img: cling, inquiryNumber: INQUIRY,
     desc: "Clear, high-cling food wrap rolls for sealing, storing and portioning ingredients in busy kitchens.",
-    specifications: spec("Food-grade PE / PVC film", "Clear", "Roll with dispenser box", "Wrapping, storing and portioning food in F&B and central kitchens", "High cling, stretchable, keeps food fresh", [["Available Sizes", "300mm x 800g (approx. 200m) · 450mm x 1.3kg (approx. 200m) · 450mm x 2.5kg (approx. 480m)"], ["Carton", "1 carton = 6 rolls"]]),
+    specifications: spec("Food-grade PE / PVC film", "Clear", "Roll with dispenser box", "Wrapping, storing and portioning food in F&B and central kitchens", "High cling, stretchable, keeps food fresh, with sliding cutter", [["Available Sizes", "300mm x 800g (approx. 200m) · 450mm x 1.3kg (approx. 200m) · 450mm x 2.5kg (approx. 480m)"], ["Carton", "1 carton = 6 rolls"]]),
   },
   {
     slug: "aluminium-foil", name: "Aluminium Foil", img: foil, inquiryNumber: INQUIRY,
     desc: "Heavy-duty aluminium foil rolls for cooking, baking, wrapping and heat retention.",
-    specifications: spec("Food-grade aluminium", "Silver", "Roll", "Cooking, baking, grilling, wrapping and heat retention", "Heavy-duty, heat resistant, moisture barrier", [["Width", "18 inch (450mm)"], ["Weight", "1kg per roll"], ["Thickness", "18 micron (0.018mm)"], ["Length", "Approx. 45–50m per roll"], ["Packing", "6 rolls = 1 carton"]]),
+    specifications: spec("Food-grade aluminium", "Silver", "Roll", "Cooking, baking, grilling, wrapping and heat retention", "Heavy-duty, heat resistant, moisture barrier, with cutter", [["Width", "18 inch (450mm)"], ["Weight", "1kg per roll"], ["Thickness", "18 micron (0.018mm)"], ["Length", "Approx. 45–50m per roll"], ["Packing", "6 rolls = 1 carton"]]),
   },
   {
     slug: "disposable-hair-nets", name: "Disposable Hair Nets", img: hairnet, images: [hairnet, hairnetBlue],
