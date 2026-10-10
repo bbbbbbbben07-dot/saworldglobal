@@ -14,3 +14,4 @@
 - Group the catalog visibly by product category without hiding any items by default; keep each small-screen category independently scrollable only if it overflows, so short groups need no sliding.
 - Render shared site header and footer in the root layout, with homepage section links using typed router links and hashes, so product detail pages retain the existing navigation.
 - Use a reusable product detail presentation component fed by leaf-route product data, so later products can reuse the gallery, specifications and inquiry layout without duplicating page markup.
+- Use shared site contact constants for footer, contact cards and all inquiry CTAs so contact destinations stay consistent across pages.
