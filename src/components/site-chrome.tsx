@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Mail, Menu, MessageCircle, MessagesSquare, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoMark from "@/assets/sa-logo-mark.png.asset.json";
+import { siteContact } from "@/lib/contact";
 
 const nav = [
   { label: "Home", hash: "home" },
@@ -34,9 +35,9 @@ export function Header() {
               {n.label}
             </Link>
           ))}
-          <Link to="/" hash="contact" className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90">
-            Get a Quote
-          </Link>
+          <Button asChild className="h-auto rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-none transition hover:bg-primary/90">
+            <a href={siteContact.whatsappUrl} target="_blank" rel="noopener noreferrer">Get a Quote</a>
+          </Button>
         </nav>
         <Button variant="ghost" size="icon" className="rounded-lg p-2 text-primary md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
           {open ? <X /> : <Menu />}
@@ -56,11 +57,47 @@ export function Header() {
 }
 
 export function Footer() {
+  const [copyStatus, setCopyStatus] = useState("");
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => { if (copyTimer.current) clearTimeout(copyTimer.current); }, []);
+  const copyWeChat = async () => {
+    try {
+      await navigator.clipboard.writeText(siteContact.wechatId);
+      setCopyStatus("WeChat ID copied!");
+    } catch {
+      setCopyStatus(`WeChat ID: ${siteContact.wechatId}`);
+    }
+    if (copyTimer.current) clearTimeout(copyTimer.current);
+    copyTimer.current = setTimeout(() => setCopyStatus(""), 3000);
+  };
+  const linkClass = "inline-flex min-h-9 items-center gap-2 text-sm text-primary-foreground/75 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent";
   return (
-    <footer className="bg-primary py-10 text-primary-foreground">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 text-sm sm:flex-row lg:px-8">
-        <p className="font-bold tracking-tight">SA WORLD GLOBAL</p>
-        <p className="opacity-70">© {new Date().getFullYear()} SA WORLD GLOBAL. All rights reserved.</p>
+    <footer className="bg-primary pb-6 pt-10 text-primary-foreground">
+      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.7fr_1fr] lg:gap-12">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <Link to="/" hash="home" className="text-lg font-bold transition-colors hover:text-accent">SA WORLD GLOBAL</Link>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-primary-foreground/70">Reliable packaging and hygiene supplies for F&B and central kitchens in Malaysia.</p>
+          </div>
+          <nav aria-label="Footer navigation">
+            <h2 className="mb-2 text-sm font-semibold">Quick Links</h2>
+            <ul className="grid grid-cols-2 gap-x-5 lg:max-w-48">
+              {nav.map((n) => <li key={n.hash}><Link to="/" hash={n.hash} className={linkClass}>{n.label}</Link></li>)}
+            </ul>
+          </nav>
+          <div className="min-w-0">
+            <h2 className="mb-2 text-sm font-semibold">Contact Us</h2>
+            <ul>
+              <li><a href={siteContact.whatsappUrl} target="_blank" rel="noopener noreferrer" className={linkClass}><MessageCircle className="h-4 w-4 shrink-0 text-accent" /><span>WhatsApp: {siteContact.whatsappDisplay}</span></a></li>
+              <li><Button variant="ghost" onClick={copyWeChat} className={`h-auto justify-start rounded-sm p-0 font-normal hover:bg-transparent ${linkClass}`} aria-label={`Copy WeChat ID ${siteContact.wechatId}`}><MessagesSquare className="h-4 w-4 shrink-0 text-accent" /><span>WeChat: {siteContact.wechatId}</span></Button></li>
+              <li><a href={`mailto:${siteContact.email}`} className={linkClass}><Mail className="h-4 w-4 shrink-0 text-accent" /><span className="break-all">{siteContact.email}</span></a></li>
+            </ul>
+            <p role="status" className="min-h-5 text-xs text-accent">{copyStatus}</p>
+          </div>
+        </div>
+        <div className="mt-6 border-t border-primary-foreground/15 pt-5 pr-16 text-xs leading-relaxed text-primary-foreground/60">
+          © {new Date().getFullYear()} SA WORLD GLOBAL. All rights reserved.
+        </div>
       </div>
     </footer>
   );
@@ -69,7 +106,7 @@ export function Footer() {
 export function FloatingWhatsApp() {
   return (
     <a
-      href="https://wa.me/60123456789"
+      href={siteContact.whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"

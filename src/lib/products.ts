@@ -9,8 +9,9 @@ import disposableMasks from "@/assets/face-masks-disposable.jpg";
 import medicalMasks from "@/assets/medical-masks.jpg";
 import faceShield from "@/assets/plastic-mouth-mask.jpg";
 import { nitrileProduct } from "@/lib/nitrile-product";
+import { siteContact } from "@/lib/contact";
 
-const INQUIRY = "6012456789";
+const INQUIRY = siteContact.whatsappNumber;
 
 type Row = { label: string; value: string; pending?: boolean };
 const spec = (material: string, color: string, type: string, application: string, features: string, extra: [string, string][]): Row[] => [

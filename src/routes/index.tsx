@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import hero from "@/assets/hero-kitchen-clingfilm-half.jpg";
 import { products } from "@/lib/products";
 import { FloatingWhatsApp } from "@/components/site-chrome";
+import { siteContact } from "@/lib/contact";
 
 const TITLE = "SA WORLD GLOBAL — Food Packaging & Hygiene Supplies Malaysia";
 const DESC =
@@ -49,9 +50,9 @@ function Hero() {
             <a href="#products" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground shadow-soft transition hover:-translate-y-0.5 hover:shadow-lift">
               View Our Products <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#contact" className="inline-flex items-center rounded-full border border-primary/20 bg-background px-7 py-3.5 font-semibold text-primary transition hover:border-accent hover:text-accent">
-              Contact Us
-            </a>
+            <Button asChild variant="outline" className="h-auto rounded-full border-primary/20 bg-background px-7 py-3.5 text-base font-semibold text-primary shadow-none transition hover:border-accent hover:bg-background hover:text-accent">
+              <a href={siteContact.whatsappUrl} target="_blank" rel="noopener noreferrer">Contact Us</a>
+            </Button>
           </div>
           <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium text-muted-foreground">
             {[
@@ -272,7 +273,7 @@ function About() {
   );
 }
 
-const WECHAT_ID = "weixinhao_123";
+const WECHAT_ID = siteContact.wechatId;
 
 function Contact() {
   const [copied, setCopied] = useState(false);
@@ -301,8 +302,8 @@ function Contact() {
   const buttons = [
     {
       label: "WhatsApp",
-      detail: "+60 12-345 6789",
-      href: "https://wa.me/60123456789",
+      detail: siteContact.whatsappDisplay,
+      href: siteContact.whatsappUrl,
       icon: MessageCircle,
     },
     {
@@ -313,8 +314,8 @@ function Contact() {
     },
     {
       label: "Email",
-      detail: "info@saworldglobal.com",
-      href: "mailto:info@saworldglobal.com",
+      detail: siteContact.email,
+      href: `mailto:${siteContact.email}`,
       icon: Mail,
     },
   ];

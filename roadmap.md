@@ -18,3 +18,5 @@
 - [x] Space the product detail page evenly: breadcrumb, back link, product section, specifications and bottom button, on desktop, tablet and mobile
 - [x] Merge the new details into the Disposable Aprons, Cling Film and Aluminium Foil specifications without removing anything
 - [x] Rename the plastic mask product to Transparent Plastic Face Mask and use an accurate mouth/lower-face description everywhere
+- [x] Enrich the shared footer with company tagline, contact details and quick links
+- [x] Unify header, Hero and product inquiries with the existing main WhatsApp number and verify navigation
