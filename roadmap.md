@@ -17,3 +17,4 @@
 - [x] Add a clear Back to Products button near the top of the product detail page, keeping the breadcrumb and the bottom button
 - [x] Space the product detail page evenly: breadcrumb, back link, product section, specifications and bottom button, on desktop, tablet and mobile
 - [x] Merge the new details into the Disposable Aprons, Cling Film and Aluminium Foil specifications without removing anything
+- [x] Rename the plastic mask product to Transparent Plastic Face Mask and use an accurate mouth/lower-face description everywhere

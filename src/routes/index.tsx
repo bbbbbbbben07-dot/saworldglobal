@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
 const productCategories = [
   { name: "Packaging & Kitchen Supplies", productNames: ["Vacuum Bags", "Cling Film", "Aluminium Foil", "Disposable Aprons"] },
   { name: "Gloves", productNames: ["Nitrile Gloves", "HDPE Gloves"] },
-  { name: "Masks", productNames: ["Disposable Face Masks (Normal / Hygiene)", "Medical Face Masks", "Plastic Face Masks (Food Service)"] },
+  { name: "Masks", productNames: ["Disposable Face Masks (Normal / Hygiene)", "Medical Face Masks", "Transparent Plastic Face Mask"] },
   { name: "Hair Nets", productNames: ["Disposable Hair Nets"] },
 ];
 

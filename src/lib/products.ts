@@ -77,8 +77,8 @@ export const products: CatalogProduct[] = [
     specifications: spec("3-ply non-woven with melt-blown filter", "Green", "Disposable, ear-loop", "Commercial kitchens, food processing, hygiene-sensitive areas", "High filtration, adjustable nose wire, fluid resistant", [["Packing", "100 pcs per box"]]),
   },
   {
-    slug: "plastic-face-masks", name: "Plastic Face Masks (Food Service)", img: faceShield, inquiryNumber: INQUIRY,
-    desc: "Transparent full-face shields with adjustable straps, offering clear visibility and splash protection during food handling.",
+    slug: "plastic-face-masks", name: "Transparent Plastic Face Mask", img: faceShield, inquiryNumber: INQUIRY,
+    desc: "Transparent plastic face mask designed for food handling, covering the mouth and lower face to support hygiene in F&B and central kitchen environments.",
     specifications: spec("Clear PET / PC with plastic frame", "Transparent / White", "Reusable mouth shield", "Food service counters, buffets, food handling, kitchen use", "Clear visibility, splash protection, adjustable strap", [["Size", "140mm (L) x 60mm (H)"], ["Design", "Open bottom, anti-fog shield"], ["Packing", "Individually wrapped / sealed"], ["Box", "10 pcs per box"], ["Carton", "1 carton = 20 boxes"]]),
   },
 ];
