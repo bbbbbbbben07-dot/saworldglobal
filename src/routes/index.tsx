@@ -7,9 +7,10 @@ import { products } from "@/lib/products";
 import { FloatingWhatsApp } from "@/components/site-chrome";
 import { siteContact } from "@/lib/contact";
 
-const TITLE = "SA WORLD GLOBAL — Food Packaging & Hygiene Supplies Malaysia";
+const TITLE =
+  "SA WORLD GLOBAL | Packaging & Hygiene Supplies for F&B and Central Kitchens in Malaysia";
 const DESC =
-  "Premium vacuum bags, gloves, aprons and food packaging supplies trusted by F&B businesses and central kitchens across Malaysia.";
+  "SA WORLD GLOBAL supplies vacuum bags, gloves, face masks, hair nets, cling film, aluminium foil and disposable kitchen supplies for F&B businesses and central kitchens across Malaysia.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
