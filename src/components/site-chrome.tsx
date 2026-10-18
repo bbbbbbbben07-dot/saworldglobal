@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Mail, Menu, MessageCircle, MessagesSquare, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoMark from "@/assets/sa-logo-mark.png.asset.json";
+import logoMark from "@/assets/sa-world-global-logo.png";
 import { siteContact } from "@/lib/contact";
 
 const nav = [
@@ -16,7 +16,7 @@ function Logo() {
   return (
     <Link to="/" hash="home" className="flex items-center gap-3">
       <span className="grid h-10 w-11 place-items-center rounded-xl bg-primary p-2">
-        <img src={logoMark.url} alt="SA WORLD GLOBAL logo" className="h-full w-full object-contain" />
+        <img src={logoMark} alt="SA WORLD GLOBAL logo" className="h-full w-full object-contain" />
       </span>
       <span className="text-base font-extrabold tracking-tight text-primary sm:text-lg">SA WORLD GLOBAL</span>
     </Link>
