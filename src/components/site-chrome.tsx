@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Mail, Menu, MessageCircle, MessagesSquare, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoMark from "@/assets/sa-logo-mark.png.asset.json";
+import logoMark from "@/assets/sa-world-global-logo.png";
 import { siteContact } from "@/lib/contact";
 
 const nav = [
