@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Mail, Menu, MessageCircle, MessagesSquare, X } from "lucide-react";
+import { Mail, Menu, MessageCircle, MessagesSquare, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logoMark from "@/assets/sa-world-global-logo.png";
 import { siteContact } from "@/lib/contact";
@@ -89,6 +89,7 @@ export function Footer() {
             <h2 className="mb-2 text-sm font-semibold">Contact Us</h2>
             <ul>
               <li><a href={siteContact.whatsappUrl} target="_blank" rel="noopener noreferrer" className={linkClass}><MessageCircle className="h-4 w-4 shrink-0 text-accent" /><span>WhatsApp: {siteContact.whatsappDisplay}</span></a></li>
+              <li><a href={siteContact.phoneUrl} className={linkClass}><Phone className="h-4 w-4 shrink-0 text-accent" /><span>Phone: {siteContact.phoneDisplay}</span></a></li>
               <li><Button variant="ghost" onClick={copyWeChat} className={`h-auto justify-start rounded-sm p-0 font-normal hover:bg-transparent ${linkClass}`} aria-label={`Copy WeChat ID ${siteContact.wechatId}`}><MessagesSquare className="h-4 w-4 shrink-0 text-accent" /><span>WeChat: {siteContact.wechatId}</span></Button></li>
               <li><a href={`mailto:${siteContact.email}`} className={linkClass}><Mail className="h-4 w-4 shrink-0 text-accent" /><span className="break-all">{siteContact.email}</span></a></li>
             </ul>

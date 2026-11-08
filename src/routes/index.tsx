@@ -308,6 +308,12 @@ function Contact() {
       icon: MessageCircle,
     },
     {
+      label: "Phone",
+      detail: siteContact.phoneDisplay,
+      href: siteContact.phoneUrl,
+      icon: Phone,
+    },
+    {
       label: "WeChat",
       detail: WECHAT_ID,
       action: copyWeChat,
@@ -319,23 +325,17 @@ function Contact() {
       href: `mailto:${siteContact.email}`,
       icon: Mail,
     },
-    {
-      label: "Phone",
-      detail: siteContact.phoneDisplay,
-      href: siteContact.phoneUrl,
-      icon: Phone,
-    },
   ];
 
   return (
     <section id="contact" className="scroll-mt-20 py-20 lg:py-28">
-      <div className="mx-auto max-w-4xl px-5 lg:px-8">
+      <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-accent">Contact</p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">Get in Touch</h2>
           <p className="mt-4 text-muted-foreground">Reach us on WhatsApp or WeChat, or send us an email — we'll get back to you with a quotation.</p>
         </div>
-        <div className="mx-auto mt-12 grid max-w-3xl gap-5 sm:grid-cols-3">
+        <div className="mx-auto mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {buttons.map(({ label, detail, href, action, icon: Icon }) => {
             const cls =
               "flex w-full select-none flex-col items-center gap-3 rounded-3xl border border-border bg-card px-6 py-8 shadow-soft transition-all duration-150 ease-out hover:-translate-y-1 hover:border-accent/40 hover:shadow-lift active:translate-y-0.5 active:shadow-none focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/30";
