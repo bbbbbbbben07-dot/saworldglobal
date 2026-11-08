@@ -1,7 +1,9 @@
 export const siteContact = {
-  whatsappNumber: "60123456789",
-  whatsappDisplay: "+60 12-345 6789",
-  whatsappUrl: "https://wa.me/60123456789",
-  wechatId: "weixinhao_123",
+  whatsappNumber: "60143129489",
+  whatsappDisplay: "+60143129489",
+  whatsappUrl: "https://wa.me/60143129489",
+  phoneDisplay: "+60143129489",
+  phoneUrl: "tel:+60143129489",
+  wechatId: "Saben07",
   email: "sales@sapixel.my",
 };

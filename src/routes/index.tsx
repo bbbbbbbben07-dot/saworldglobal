@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Mail, MessageCircle, MessagesSquare, ShieldCheck, Truck, Award, ArrowRight, CheckCircle2, Package } from "lucide-react";
+import { Mail, MessageCircle, MessagesSquare, Phone, ShieldCheck, Truck, Award, ArrowRight, CheckCircle2, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import hero from "@/assets/hero-kitchen-clingfilm-half.jpg";
 import { products } from "@/lib/products";
@@ -318,6 +318,12 @@ function Contact() {
       detail: siteContact.email,
       href: `mailto:${siteContact.email}`,
       icon: Mail,
+    },
+    {
+      label: "Phone",
+      detail: siteContact.phoneDisplay,
+      href: siteContact.phoneUrl,
+      icon: Phone,
     },
   ];
 
